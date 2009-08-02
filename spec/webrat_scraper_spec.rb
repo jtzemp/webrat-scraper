@@ -50,7 +50,9 @@ describe WebratScraper do
     
     describe "#fill_in" do
       it "fills in a form" do
-        
+        FakeWeb.register_uri(:get, "http://www.google.com", :body => open_fixture(:google_homepage) )
+        @session.visit "http://www.google.com"
+        lambda {@session.fill_in "q", :with => "webrat-scraper"}.should_not raise_error
       end
     end
     
