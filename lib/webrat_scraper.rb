@@ -3,6 +3,9 @@ require 'webrat/mechanize'
 require 'test/unit/assertions'
 
 class WebratScraper < Webrat::MechanizeSession
+  include Webrat::Matchers
+  include Test::Unit::Assertions
+  
   def initialize(context=nil)
     super(context)
   end
@@ -15,8 +18,11 @@ class WebratScraper < Webrat::MechanizeSession
     @user_agent = mechanize.user_agent = new_user_agent
   end
   
-  # the Nokogiri object for the response.body for the session's current state.
-  def doc
-    Nokogiri::HTML(response.body)
+  # the Nokogiri object for the response body for the session's current state.
+  alias :doc :dom
+
+  
+  def post(url, data={})
+    visit(url, :post, data)
   end
 end

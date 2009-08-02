@@ -32,6 +32,8 @@ describe WebratScraper do
       FakeWeb.register_uri(:get, "http://example.com/", :body => "Hello World!")
       FakeWeb.register_uri(:get, "http://example.com/1", :body => "Hello World 1!")
       FakeWeb.register_uri(:get, "http://example.com/2", :body => "Hello World 2!")
+      FakeWeb.register_uri(:get, "http://example.com/form", :body => open_fixture("fake_form.html"))
+      FakeWeb.register_uri(:post, "http://example.com/action", :body => open_fixture("fake_form_action.html"))
     end
     
     before(:each) do
@@ -49,22 +51,25 @@ describe WebratScraper do
     end
     
     describe "#fill_in" do
-      it "fills in a form" do
-        FakeWeb.register_uri(:get, "http://www.google.com", :body => open_fixture(:google_homepage) )
-        @session.visit "http://www.google.com"
-        lambda {@session.fill_in "q", :with => "webrat-scraper"}.should_not raise_error
+      it "fills in a form field with a value" do
+        @session.visit "http://example.com/form"
+        lambda {@session.fill_in "Username", :with => "who"}.should_not raise_error
       end
     end
     
     describe "#click_link" do
       it "clicks a link" do
-        
+        @session.visit "http://example.com/form"
+        @session.click_link "Page two"
+        @session.doc.inner_text.should == "Hello World 2!"
       end
     end
     
     describe "#click_button" do
       it "clicks a button" do
-        
+        @session.visit "http://example.com/form"
+        @session.click_button "Save"
+        @session.doc.inner_text.should == "Form Post!"
       end
     end
     
