@@ -4,8 +4,7 @@ require 'test/unit/assertions'
 
 class WebratScraper < Webrat::MechanizeSession
   def initialize(context=nil)
-    
-    super
+    super(context)
   end
   
   def user_agent
