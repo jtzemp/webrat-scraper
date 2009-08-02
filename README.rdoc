@@ -38,8 +38,8 @@ For more info check out documentation for:
 * Webrat
 * Mechanize
 * Nokogiri
-** CSS Selectors
-** XPath Selectors
+  * CSS Selectors
+  * XPath Selectors
 
 == Note on Patches/Pull Requests
  
@@ -49,7 +49,7 @@ For more info check out documentation for:
   future version unintentionally.
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but
-   bump version in a commit by itself I can ignore when I pull)
+  bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
 == Copyright
