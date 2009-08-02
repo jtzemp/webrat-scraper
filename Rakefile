@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "webrat-scraper"
-    gem.summary = %Q{A web scraper using Webrat::MechanizeSession - does acceptance-based web scraping relying on the great webrat behavior description language.}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{A web scraper using Webrat & Mechanize - does acceptance-based web scraping relying on the great webrat behavior description language.}
+    gem.description = %Q{A web scraper using Webrat & Mechanize}
     gem.email = "jtzemp@gmail.com"
     gem.homepage = "http://github.com/jtzemp/webrat-scraper"
     gem.authors = ["JT Zemp"]
