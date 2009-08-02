@@ -1,12 +1,51 @@
 = webrat-scraper
 
-Description goes here.
+A web scraper built on Webrat::Mechanize that traverses the web and allows
+access to the webrat session through Mechanize and Nokogiri objects
+
+== How to use
+
+=== Install
+    gem sources -a http://gems.github.com
+    gem install jtzemp-webrat-scraper
+    
+=== Use
+
+    class MyScraper < WebratScraper
+      def initialize
+        @url = "http://www.google.com"
+      end
+      
+      def first_result_for(search_term)
+        visit @url
+        
+        fill_in "Google Search", :with => search_term
+        click_button
+        
+        link = {}
+        link[:html] = (doc/"li.g a.l").first
+        link[:text] = link.inner_text
+        link[:url]  = link.attributes["href"].to_s
+        link
+      end
+    end
+    
+    m = MyScraper.new
+    result = m.first_result_for("webrat-mechanize")
+    puts result.inspect
+    
+For more info check out documentation for:
+* Webrat
+* Mechanize
+* Nokogiri
+** CSS Selectors
+** XPath Selectors
 
 == Note on Patches/Pull Requests
  
 * Fork the project.
 * Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
+* Add specs for it. This is important so I don't break it in a
   future version unintentionally.
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but
