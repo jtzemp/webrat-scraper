@@ -29,10 +29,10 @@ describe WebratScraper do
   
   describe "webrat's methods" do
     before(:all) do
-      FakeWeb.register_uri(:get, "http://example.com/", :body => "Hello World!")
-      FakeWeb.register_uri(:get, "http://example.com/1", :body => "Hello World 1!")
-      FakeWeb.register_uri(:get, "http://example.com/2", :body => "Hello World 2!")
-      FakeWeb.register_uri(:get, "http://example.com/form", :body => open_fixture("fake_form.html"))
+      FakeWeb.register_uri(:get,  "http://example.com/", :body => "Hello World!")
+      FakeWeb.register_uri(:get,  "http://example.com/1", :body => "Hello World 1!")
+      FakeWeb.register_uri(:get,  "http://example.com/2", :body => "Hello World 2!")
+      FakeWeb.register_uri(:get,  "http://example.com/form", :body => open_fixture("fake_form.html"))
       FakeWeb.register_uri(:post, "http://example.com/action", :body => open_fixture("fake_form_action.html"))
     end
     
