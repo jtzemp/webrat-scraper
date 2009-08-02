@@ -10,7 +10,9 @@ access to the webrat session through Mechanize and Nokogiri objects
     gem install jtzemp-webrat-scraper
     
 === Use
-
+    
+    require 'webrat_scraper'
+    
     class MyScraper < WebratScraper
       def initialize
         @url = "http://www.google.com"
