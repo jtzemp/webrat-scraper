@@ -75,7 +75,8 @@ describe WebratScraper do
     
     describe "#assert_contain" do
       it "asserts that the page contains the string given" do
-        
+        @session.visit "http://example.com/form"
+        lambda { @session.assert_contain("Lorem ipsum dolor sit amet") }.should_not raise_error
       end
     end
   end
