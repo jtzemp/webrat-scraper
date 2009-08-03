@@ -69,7 +69,7 @@ describe WebratScraper do
       it "clicks a button" do
         @session.visit "http://example.com/form"
         @session.click_button "Save"
-        @session.doc.inner_text.should == "Form Post!"
+        (@session.doc/"body").inner_text.strip.should == "Form Post!"
       end
     end
     

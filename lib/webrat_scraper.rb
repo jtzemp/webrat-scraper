@@ -22,7 +22,7 @@ class WebratScraper < Webrat::MechanizeSession
   alias :doc :dom
 
   
-  def post(url, data={})
-    visit(url, :post, data)
-  end
+  # def post(url, data={})
+  #   visit(url, :post, data)
+  # end
 end
