@@ -11,6 +11,10 @@ begin
     gem.homepage = "http://github.com/jtzemp/webrat-scraper"
     gem.authors = ["JT Zemp"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency("mechanize", ">= 0.9.3")
+    gem.add_dependency("webrat", ">= 0.5.3")
+    gem.add_development_dependency('rspec')
+    
   end
 
 rescue LoadError
