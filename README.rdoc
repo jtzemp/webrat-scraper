@@ -12,26 +12,28 @@ access to the webrat session through Mechanize and Nokogiri objects
 === Use
     
     require 'webrat_scraper'
-    
+
     class MyScraper < WebratScraper
       def initialize
         @url = "http://www.google.com"
+        super
       end
-      
+
       def first_result_for(search_term)
         visit @url
-        
-        fill_in "Google Search", :with => search_term
+
+        fill_in "q", :with => search_term
         click_button
-        
+    
+        first_link = (doc/"li.g a.l").first
+    
         link = {}
-        link[:html] = (doc/"li.g a.l").first
-        link[:text] = link.inner_text
-        link[:url]  = link.attributes["href"].to_s
+        link[:text] = first_link.inner_text
+        link[:url]  = first_link.attributes["href"].to_s
         link
       end
     end
-    
+
     m = MyScraper.new
     result = m.first_result_for("webrat-mechanize")
     puts result.inspect
