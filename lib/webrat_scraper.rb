@@ -1,3 +1,5 @@
+require 'rubygems'
+gem 'webrat', '=0.4.5'
 require 'webrat'
 require 'webrat/mechanize'
 require 'test/unit/assertions'
